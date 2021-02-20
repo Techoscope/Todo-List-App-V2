@@ -5,9 +5,10 @@ function addItem (){
   if (document.getElementById('todo_input').value) {
     const item = document.createElement('li');
     item.innerHTML = document.getElementById('todo_input').value;
-    item.onclick = function() {
-      document.getElementById('todo_list').removeChild(item);
-    };
+    item.onclick = () => removeItem(item);
+    // item.onclick = function() {
+    //   removeItem(item)
+    // };
     document.getElementById('todo_list').appendChild(item);
     document.getElementById("todo_input").value = "";
   } else {
