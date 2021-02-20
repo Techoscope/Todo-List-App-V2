@@ -5,6 +5,7 @@ function addItem (){
   const item = document.createElement('li');
   item.innerHTML = document.getElementById('todo_input').value;
   document.getElementById('todo_list').appendChild(item);
+  document.getElementById("todo_input").value = "";
  }
 
 // When a user click on the item in the list, the item will be removed/deleted.
