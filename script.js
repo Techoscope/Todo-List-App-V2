@@ -6,6 +6,11 @@ const itemList = localStorage.getItem('todoItems').split(',');
 itemList.forEach(element => {
   const item = document.createElement('li');
   item.innerHTML = element;
+
+  item.onclick = function() {
+    document.getElementById('todo_list').removeChild(item);
+  };
+
   document.getElementById('todo_list').appendChild(item);
 });
 
