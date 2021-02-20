@@ -13,3 +13,7 @@ function addItem (){
  }
 
 // When a user click on the item in the list, the item will be removed/deleted.
+
+function removeItem(item) {
+  document.getElementById('todo_list').removeChild(item);
+}
