@@ -2,12 +2,14 @@
 
 function addItem (){
   // alert(document.getElementById('todo_input').value);
-  const item = document.createElement('li');
-  item.innerHTML = document.getElementById('todo_input').value;
-  document.getElementById('todo_list').appendChild(item);
-  document.getElementById("todo_input").value = "";
+  if (document.getElementById('todo_input').value) {
+    const item = document.createElement('li');
+    item.innerHTML = document.getElementById('todo_input').value;
+    document.getElementById('todo_list').appendChild(item);
+    document.getElementById("todo_input").value = "";
+  } else {
+    alert('Enter an item')
+  }
  }
 
 // When a user click on the item in the list, the item will be removed/deleted.
-
-//node
