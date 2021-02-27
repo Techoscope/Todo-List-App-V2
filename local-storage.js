@@ -17,8 +17,12 @@ function getItem() {
   const itemsToList = localStorage.getItem('todoItems').split(',');
   document.getElementById('todo_list').innerHTML = '';
   itemsToList.forEach((item) => {
-    document.getElementById('todo_list').innerHTML += `<li>${item}</li>`;
+    document.getElementById('todo_list').innerHTML += `<li onclick="removeItem(this)">${item}</li>`;
   })
+}
+
+function removeItem(item) {
+  item.remove();
 }
 
 getItem();
