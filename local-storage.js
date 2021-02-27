@@ -14,7 +14,7 @@ function addItem() {
 }
 
 function getItem() {
-  todoItems = localStorage.getItem('todoItems').split(',');
+  todoItems = localStorage.getItem('todoItems') ? localStorage.getItem('todoItems').split(',') : [];
   document.getElementById('todo_list').innerHTML = '';
   todoItems.forEach((item) => {
     document.getElementById('todo_list').innerHTML += `<li onclick="removeItem(this)">${item}</li>`;
