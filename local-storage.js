@@ -4,7 +4,7 @@
 // localStorage.clear(); // Removes every items
 // alert(myCat)
 
-const todoItems = [];
+let todoItems = [];
 
 function addItem() {
   const inputBox = document.getElementById('todo_input');
@@ -14,18 +14,24 @@ function addItem() {
 }
 
 function getItem() {
-  const itemsToList = localStorage.getItem('todoItems').split(',');
+  todoItems = localStorage.getItem('todoItems').split(',');
   document.getElementById('todo_list').innerHTML = '';
-  itemsToList.forEach((item) => {
+  todoItems.forEach((item) => {
     document.getElementById('todo_list').innerHTML += `<li onclick="removeItem(this)">${item}</li>`;
   })
 }
 
 function removeItem(item) {
-  item.remove();
+  const filteredArray = todoItems.filter(element => element !== item.innerHTML)
+  localStorage.setItem('todoItems', filteredArray);
+  getItem();
 }
 
 getItem();
+
+// Filter out the item to remove
+// Assign filtered array to a variable
+// Store new filtered array variable in localStorage
 
 
 // function addItem() {
