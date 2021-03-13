@@ -1,13 +1,30 @@
-// const ulList = document.querySelector('ul');
-const ulList = document.getElementById('todo_list');
+let todoItems = [];
 
 function addItem() {
-  const inputValue = document.getElementById('todo_input').value;
-
-  const listItem = document.createElement('li');
-  listItem.innerHTML = inputValue;
-  listItem.onclick = function () {
-    ulList.removeChild(listItem);
-  }
-  ulList.appendChild(listItem)
+  const inputBox = document.getElementById('todo_input');
+  todoItems.push(inputBox.value);
+  localStorage.setItem('todoItems', todoItems);
+  getItem();
 }
+
+function getItem() {
+  todoItems = localStorage.getItem('todoItems') ? localStorage.getItem('todoItems').split(',') : [];
+  document.getElementById('todo_list').innerHTML = '';
+  todoItems.forEach((item) => {
+    // document.getElementById('todo_list').innerHTML += `<li onclick="removeItem(this)">${item}</li>`;
+    const listItem = document.createElement('li');
+    listItem.innerHTML = item;
+    listItem.addEventListener('click', removeItem);
+    document.getElementById('todo_list').appendChild(listItem);
+  })
+  
+}
+
+function removeItem(e) {
+  // console.log(e.target.innerHTML)
+  const filteredArray = todoItems.filter(element => element !== e.target.innerHTML)
+  localStorage.setItem('todoItems', filteredArray);
+  getItem();
+}
+
+getItem();
