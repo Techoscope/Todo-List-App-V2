@@ -27,13 +27,15 @@ function listItem(todoItems) {
   const ulList = document.getElementById('todo_list');
 
   todoItems.forEach((item) => {
-    // console.log(item.title)
     // ulList.innerHTML += `<li onclick="removeItem(this)"> ${item.title} </li>`
     const listItem = document.createElement('li');
-    listItem.innerHTML = item.title;
+    listItem.innerHTML = `
+      <input type="checkbox">  
+      <input type="text" class="todo-item-input" value="${item.title}">
+      <span class="remove-item">Delete</span>
+    `;
     listItem.id = item.id;
-    // listItem.onclick = removeItem(listItem);
-    listItem.addEventListener('click', removeItem);
+    listItem.querySelector('.remove-item').addEventListener('click', removeItem);
     ulList.appendChild(listItem);
   });
 }
@@ -45,7 +47,7 @@ async function removeItem(e) {
 
   const response = await fetch('http://127.0.0.1:8080/api/todoitems/' + e.target.id, data);
   const jsonResponse = await response.json();
-  e.target.remove();
+  e.target.parentElement.remove();
 }
 
 getItems();

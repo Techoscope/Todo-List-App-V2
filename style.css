@@ -6,7 +6,29 @@
   font-style: italic;
 }
 
-#todo_list li:hover {
+/* #todo_list li:hover {
   text-decoration: line-through;
   cursor:pointer;
+} */
+
+.remove-item {
+  cursor: pointer;
+}
+
+#todo_list {
+  padding-left: 0;
+}
+
+#todo_list li {
+  list-style-type: none;
+}
+
+.todo-item-input {
+  border: none; 
+  font-size: 16px;
+}
+
+.remove-item {
+  color: red; 
+  font-size: 14px;
 }
