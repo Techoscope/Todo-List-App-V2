@@ -47,7 +47,7 @@ async function removeItem(e) {
     method: 'DELETE',
   }
 
-  const response = await fetch('http://127.0.0.1:8080/api/todoitems/' + e.target.id, data);
+  const response = await fetch('http://127.0.0.1:8080/api/todoitems/' + e.target.parentElement.id, data);
   const jsonResponse = await response.json();
   e.target.parentElement.remove();
 }
