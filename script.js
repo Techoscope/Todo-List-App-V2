@@ -38,17 +38,14 @@ function listItem(todoItems) {
   });
 }
 
-function removeItem(e) {
-  const xhr = new XMLHttpRequest();
-  const url = 'http://127.0.0.1:8080/api/todoitems/' + e.target.id;
-  xhr.responseType = 'json';
-  xhr.onreadystatechange = () => {
-    if (xhr.readyState === XMLHttpRequest.DONE){
-      e.target.remove()
-    }
+async function removeItem(e) {
+  const data = {
+    method: 'DELETE',
   }
-  xhr.open('DELETE', url);
-  xhr.send();
+
+  const response = await fetch('http://127.0.0.1:8080/api/todoitems/' + e.target.id, data);
+  const jsonResponse = await response.json();
+  e.target.remove();
 }
 
 getItems();
